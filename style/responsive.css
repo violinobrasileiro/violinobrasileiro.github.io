@@ -538,10 +538,12 @@ footer p a:hover { color: var(--goldYellow_Washed); }
     padding-bottom: 24px;
     -webkit-overflow-scrolling: touch;
   }
-  .moremusic-card { margin: 0; flex: 0 0 auto; }
-  .moremusic-videothumb { width: 220px; margin-bottom: 12px; }
+  /* fixed-width cards so the title wraps to the thumb width instead of
+     stretching the card past the image */
+  .moremusic-card { margin: 0; flex: 0 0 220px; width: 220px; }
+  .moremusic-videothumb { width: 100%; margin-bottom: 12px; }
   .moremusic-videothumb img { width: 100%; }
-  .moremusic-title { color: var(--forestGreen); font-size: 15px; line-height: 19px; }
+  .moremusic-title { color: var(--forestGreen); font-size: 15px; line-height: 19px; overflow-wrap: break-word; }
   .moremusic-author { color: var(--forestGreen); font-size: 13px; }
 
   /* music-page footer uses a bare #hc-04 with a nested #apoio */
