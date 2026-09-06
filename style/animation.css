@@ -1,7 +1,7 @@
 /* Violino Brasileiro — animation layer.
 
    Home scroll-reveal: each content block in a .homeContent section fades
-   in (opacity 0 -> 1) and rises 16px over 400ms. The first section plays
+   in (opacity 0 -> 1) and rises 20px over 400ms. The first section plays
    on load (it's already in view); the rest play as they enter the
    viewport.
 
@@ -12,7 +12,7 @@
 .reveal-ready .homeContent > div,
 .reveal-ready .homeContent > iframe {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
   transition: opacity .4s cubic-bezier(.22, .61, .36, 1),
               transform .4s cubic-bezier(.22, .61, .36, 1);
   will-change: opacity, transform;
