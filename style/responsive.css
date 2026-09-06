@@ -288,7 +288,7 @@ footer p a:hover { color: var(--goldYellow_Washed); }
     padding: 0;
     margin: 40px 0 0 0;
   }
-  #apoio p, #m-apoio p { padding-bottom: 10px; font-size: 15px; }
+  #apoio p, #m-apoio p { font-size: 15px; }
   #apoio img, #m-apoio img { width: 140px; }
 
   footer {
@@ -590,6 +590,9 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }
   .mp-moremusic { margin: 48px 8vw; }
   .mp-sheetimg { padding: 56px 8vw; }
+
+  /* "Apoio" label keeps a little breathing room on tablet; dropped < 600px */
+  #apoio p, #m-apoio p { padding-bottom: 10px; }
 }
 
 
