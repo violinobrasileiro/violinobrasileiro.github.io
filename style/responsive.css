@@ -41,7 +41,7 @@ header.header-hidden,
    nav.js sets header.style.backgroundColor + [data-nav-theme] as you scroll.
    These rules keep the logo / nav / hamburger readable on either ground. ---- */
 header a,
-header .nav-toggle span,
+header .nav-toggle,
 header #logo-desktop {
   transition: color .35s cubic-bezier(.22, .61, .36, 1),
               background-color .35s cubic-bezier(.22, .61, .36, 1),
@@ -50,8 +50,8 @@ header #logo-desktop {
 header[data-nav-theme="dark"] #leftContent a {
   background-image: url("../assets/logo-desktop.svg");   /* cream wordmark */
 }
-header[data-nav-theme="dark"] .nav-toggle span {
-  background-color: var(--goldYellow_Washed);
+header[data-nav-theme="dark"] .nav-toggle {
+  color: var(--goldYellow_Washed);
 }
 header[data-nav-theme="dark"] a {
   color: var(--goldYellow_Washed);
@@ -61,8 +61,8 @@ header[data-nav-theme="dark"] a:hover { color: var(--goldYellow); }
 header[data-nav-theme="light"] #leftContent a {
   background-image: url("../assets/logo-desktop-light.svg");  /* dark wordmark */
 }
-header[data-nav-theme="light"] .nav-toggle span {
-  background-color: var(--forestGreen);
+header[data-nav-theme="light"] .nav-toggle {
+  color: var(--forestGreen);
 }
 header[data-nav-theme="light"] #logo-desktop {
   filter: brightness(0);   /* the cream <img> logo -> near-black on white */
@@ -135,30 +135,24 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   /* the inline nav is replaced by the hamburger + overlay */
   #rightContent > ul { display: none; }
 
-  /* ---- Hamburger button ---- */
+  /* ---- Hamburger button (inline SVG, tinted via currentColor) ---- */
   .nav-toggle {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 5px;
     width: 40px;
     height: 40px;
-    padding: 8px;
+    padding: 0;
     margin: 0;
     border: 0;
     background: transparent;
+    color: var(--forestGreen);
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
   }
-  .nav-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--forestGreen);
-    border-radius: 2px;
-  }
-  .nav-toggle:hover span { background-color: var(--goldYellow); }
+  .nav-toggle svg { display: block; }
+  .nav-toggle:hover { color: var(--goldYellow); }
 
   /* ---- Full-screen overlay menu ---- */
   .nav-overlay {
@@ -185,17 +179,18 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     position: absolute;
     top: 18px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 48px;
     height: 48px;
     padding: 0;
     border: 0;
     background: transparent;
     color: var(--goldYellow_Washed);
-    font-family: redonda;
-    font-size: 40px;
-    line-height: 1;
     cursor: pointer;
   }
+  .nav-overlay-close svg { display: block; width: 26px; height: 26px; }
   .nav-overlay-close:hover { color: var(--goldYellow); }
   .nav-toggle:focus-visible,
   .nav-overlay-close:focus-visible {
@@ -650,9 +645,9 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
 
 /* ==========================================================================
-   SMALL PHONES  (<= 390px) — footer stacks
+   PHONES  (< 600px) — footer stacks
    ========================================================================== */
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 599px) {
 
   /* 1. footer nav links one per line */
   #hc-04 ul,

@@ -23,7 +23,11 @@
     toggle.className = "nav-toggle";
     toggle.setAttribute("aria-label", "Abrir menu");
     toggle.setAttribute("aria-expanded", "false");
-    toggle.innerHTML = "<span></span><span></span><span></span>";
+    toggle.innerHTML =
+      '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">' +
+      '<rect x="4" y="7" width="16" height="1.5" fill="currentColor"/>' +
+      '<rect x="4" y="11.5" width="16" height="1.5" fill="currentColor"/>' +
+      '<rect x="4" y="16" width="16" height="1.5" fill="currentColor"/></svg>';
     right.appendChild(toggle);
 
     /* full-screen overlay menu */
@@ -37,7 +41,10 @@
     closeBtn.type = "button";
     closeBtn.className = "nav-overlay-close";
     closeBtn.setAttribute("aria-label", "Fechar menu");
-    closeBtn.innerHTML = "&times;";
+    closeBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">' +
+      '<rect x="7.06055" y="6" width="16" height="1.5" transform="rotate(45 7.06055 6)" fill="currentColor"/>' +
+      '<rect width="16" height="1.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.3135 6)" fill="currentColor"/></svg>';
 
     var menu = document.createElement("nav");
     menu.className = "nav-overlay-menu";
