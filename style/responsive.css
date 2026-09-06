@@ -27,8 +27,8 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 header,
 #header,
 #header-light {
-  transition: transform .3s ease, background-color .3s ease;
-  will-change: transform;
+  transition: transform .3s ease, background-color .16s ease-out;
+  will-change: transform, background-color;
 }
 header.header-hidden,
 #header.header-hidden,
@@ -39,6 +39,11 @@ header.header-hidden,
 /* ---- Home page: header tinted to the section behind it.
    nav.js sets header.style.backgroundColor + [data-nav-theme] as you scroll.
    These rules keep the logo / nav / hamburger readable on either ground. ---- */
+header a,
+header .nav-toggle span,
+header #logo-desktop {
+  transition: color .16s ease-out, background-color .16s ease-out, filter .16s ease-out;
+}
 header[data-nav-theme="dark"] #leftContent a {
   background-image: url("../assets/logo-desktop.svg");   /* cream wordmark */
 }
