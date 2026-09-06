@@ -615,3 +615,13 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   footer .footer-title,
   footer .footer-credit { display: block; }
 }
+
+
+/* ==========================================================================
+   DESKTOP (> 915px) — header left gutter next to the logo is 24px
+   ========================================================================== */
+@media screen and (min-width: 916px) {
+  header,
+  #header,
+  #header-light { padding-left: 24px; }
+}
