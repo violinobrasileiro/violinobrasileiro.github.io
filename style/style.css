@@ -21,10 +21,15 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 :focus {
   outline: 0;
 }
+/* clip horizontal overflow at the viewport, not on <body>, so a
+   position: sticky header (mobile) still sticks to the viewport */
+html {
+  overflow-x: hidden;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x:hidden;
     margin: 0;
     padding: 0;
     background-color: var(--forestGreen);
@@ -176,39 +181,6 @@ p {
 
 .show{
   display: inline-flex !important;
-}
-
-@media screen and (max-width: 920px) {
-
-.container-mobile{
-  width: 100%;
-  height: 100vh;
-  background-color: var(--forestGreen_Dark);
-  display: block;
-  z-index: 100;
-}
-
-.container-mobile p{
-  font-family: redonda;
-  font-size: 16px;
-  padding: 16px;
-  padding-top: 48px;
-  max-width: 340px;
-  line-height: 28px;
-}
-
-#cm-assinatura {
-  font-family: redonda;
-  font-size: 16px;
-  padding: 16px;
-  color: var(--goldYellow);
-}
-
-body{
-  overflow: hidden;
-}
-
-
 }
 
 @media screen and (min-width: 920px) {

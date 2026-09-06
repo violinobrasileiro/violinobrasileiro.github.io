@@ -27,7 +27,7 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 header,
 #header,
 #header-light {
-  transition: transform .3s ease;
+  transition: transform .3s ease, background-color .3s ease;
   will-change: transform;
 }
 header.header-hidden,
@@ -36,19 +36,45 @@ header.header-hidden,
   transform: translateY(-100%);
 }
 
+/* ---- Home page: header tinted to the section behind it.
+   nav.js sets header.style.backgroundColor + [data-nav-theme] as you scroll.
+   These rules keep the logo / nav / hamburger readable on either ground. ---- */
+header[data-nav-theme="dark"] #leftContent a {
+  background-image: url("../assets/logo-desktop.svg");   /* cream wordmark */
+}
+header[data-nav-theme="dark"] .nav-toggle span {
+  background-color: var(--goldYellow_Washed);
+}
+header[data-nav-theme="dark"] a {
+  color: var(--goldYellow_Washed);
+}
+header[data-nav-theme="dark"] a:hover { color: var(--goldYellow); }
+
+header[data-nav-theme="light"] #leftContent a {
+  background-image: url("../assets/logo-desktop-light.svg");  /* dark wordmark */
+}
+header[data-nav-theme="light"] .nav-toggle span {
+  background-color: var(--forestGreen);
+}
+header[data-nav-theme="light"] #logo-desktop {
+  filter: brightness(0);   /* the cream <img> logo -> near-black on white */
+}
+header[data-nav-theme="light"] a {
+  color: var(--forestGreen);
+}
+header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
+
 @media screen and (max-width: 919px) {
 
   /* ---- Kill the "mobile not supported" gate -------------------------------- */
   .container-mobile { display: none !important; }
 
-  html, body {
-    /* clip (not hidden) so no scroll container is created — keeps the
-       sticky header sticking to the viewport */
-    overflow-x: clip;
+  /* horizontal overflow is clipped on <html> (style.css) so <body> stays a
+     non-scroll-container and the sticky header sticks to the viewport */
+  body {
     width: 100%;
+    font-size: 16px;
   }
-
-  body { font-size: 16px; }
 
   img { max-width: 100%; height: auto; }
 

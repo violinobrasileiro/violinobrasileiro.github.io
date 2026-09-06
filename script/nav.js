@@ -3,6 +3,8 @@
       (hidden by CSS at >= 920px, so it's a no-op on desktop).
    2. All breakpoints: hides the header on scroll-down, reveals it on
       scroll-up, via the .header-hidden class (animated in CSS).
+   3. Home page: tints the header to match the section behind it
+      (sections carry data-nav-bg / data-nav-theme).
    Markup is built here so no page template had to change. */
 (function () {
   "use strict";
@@ -78,16 +80,41 @@
     var header = document.querySelector("header");
     if (!header) return;
 
+    var sections = Array.prototype.slice.call(
+      document.querySelectorAll("[data-nav-bg]")
+    );
+
     var lastY = window.pageYOffset || 0;
     var ticking = false;
     var REVEAL_AT_TOP = 4;   /* always show near the very top */
     var HIDE_AFTER = 80;     /* don't hide until scrolled past this */
 
+    function applyTheme() {
+      if (!sections.length) return;
+      /* which section sits just under the header's bottom edge? */
+      var probeY = header.getBoundingClientRect().bottom + 1;
+      var current = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        var r = sections[i].getBoundingClientRect();
+        if (r.top <= probeY) current = sections[i];
+      }
+      var bg = current.getAttribute("data-nav-bg");
+      if (bg && header.style.backgroundColor !== bg) {
+        header.style.backgroundColor = bg;
+      }
+      var theme = current.getAttribute("data-nav-theme");
+      if (theme && header.getAttribute("data-nav-theme") !== theme) {
+        header.setAttribute("data-nav-theme", theme);
+      }
+    }
+
     function update() {
       ticking = false;
       var y = window.pageYOffset || 0;
 
-      /* menu open => leave the header alone */
+      applyTheme();
+
+      /* menu open => leave the header visibility alone */
       if (document.body.classList.contains("nav-open")) { lastY = y; return; }
 
       if (y <= REVEAL_AT_TOP) {
@@ -100,12 +127,15 @@
       lastY = y;
     }
 
+    applyTheme();   /* set the initial tint before any scroll */
+
     window.addEventListener("scroll", function () {
       if (!ticking) {
         window.requestAnimationFrame(update);
         ticking = true;
       }
     }, { passive: true });
+    window.addEventListener("resize", applyTheme, { passive: true });
   }
 
   function init() {
