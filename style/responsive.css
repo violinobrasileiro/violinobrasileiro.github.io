@@ -173,7 +173,7 @@
   .homeContent {
     width: 100%;
     box-sizing: border-box;
-    padding: 44px 24px;
+    padding: 8px 24px;
   }
 
   #hc-01 { display: block; }
@@ -529,7 +529,7 @@
   h1 { font-size: 24px; }
   p  { font-size: 18px; line-height: 29px; }
 
-  .homeContent { padding: 64px 8vw; }
+  .homeContent { padding: 8px 8vw; }
   #hc-01 { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; }
   #hc-01 > div { flex: 1 1 300px; padding: 0; }
   #hc-01 iframe,
