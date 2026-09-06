@@ -61,7 +61,8 @@
   /* first anchor becomes the logo; hide any duplicate logo anchor */
   #leftContent a:first-child {
     display: block;
-    width: 150px;
+    width: 220px;
+    max-width: 60vw;
     height: 20px;
     background: url("../assets/logo-desktop-light.svg") left center / contain no-repeat;
   }
