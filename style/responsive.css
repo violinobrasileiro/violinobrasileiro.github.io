@@ -591,3 +591,22 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   .mp-moremusic { margin: 48px 8vw; }
   .mp-sheetimg { padding: 56px 8vw; }
 }
+
+
+/* ==========================================================================
+   SMALL PHONES  (<= 390px) — footer stacks
+   ========================================================================== */
+@media screen and (max-width: 390px) {
+
+  /* 1. footer nav links one per line */
+  #hc-04 ul,
+  #mc-04 ul {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* 2 + 3. credit: name goes under the title, drop the " | " separator */
+  footer .footer-sep { display: none; }
+  footer .footer-title,
+  footer .footer-credit { display: block; }
+}
