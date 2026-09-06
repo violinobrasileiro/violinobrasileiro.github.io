@@ -37,9 +37,13 @@ header.header-hidden,
   transform: translateY(-100%);
 }
 
-/* ---- Home page: header tinted to the section behind it.
-   nav.js sets header.style.backgroundColor + [data-nav-theme] as you scroll.
-   These rules keep the logo / nav / hamburger readable on either ground. ---- */
+/* ---- Home page: transparent header, its content re-coloured for
+   contrast against the section behind it. nav.js sets [data-nav-theme]
+   as you scroll. ---- */
+header[data-nav-theme] {
+  background-color: transparent;
+}
+
 header a,
 header .nav-toggle span,
 header #logo-desktop {

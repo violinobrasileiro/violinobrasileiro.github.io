@@ -98,10 +98,8 @@
         var r = sections[i].getBoundingClientRect();
         if (r.top <= probeY) current = sections[i];
       }
-      var bg = current.getAttribute("data-nav-bg");
-      if (bg && header.style.backgroundColor !== bg) {
-        header.style.backgroundColor = bg;
-      }
+      /* header stays transparent — only the logo / nav / hamburger colour
+         flips for contrast against the section behind it */
       var theme = current.getAttribute("data-nav-theme");
       if (theme && header.getAttribute("data-nav-theme") !== theme) {
         header.setAttribute("data-nav-theme", theme);
