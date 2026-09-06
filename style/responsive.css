@@ -201,10 +201,24 @@
     letter-spacing: 2px;
   }
 
-  #music-level a { display: flex; flex-direction: column; gap: 28px; color: var(--forestGreen_Dark); }
-  #music-level > div,
-  #music-level a > div { width: 100%; text-align: center; }
-  #music-level img { width: 70%; max-width: 240px; padding: 0; }
+  /* horizontal-scroll carousel: the 3 levels sit side by side and swipe */
+  #music-level a {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    color: var(--forestGreen_Dark);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+  #music-level a > div {
+    flex: 0 0 58%;
+    max-width: 240px;
+    text-align: center;
+    scroll-snap-align: start;
+  }
+  #music-level img { width: 100%; max-width: none; padding: 0; }
   #music-level h4 {
     padding-top: 14px;
     font-family: redonda;
@@ -521,7 +535,9 @@
   #hc-01 iframe,
   .homeContent iframe { max-height: 300px; }
 
-  #music-level a { flex-direction: row; gap: 16px; }
+  /* tablet: all 3 levels fit side by side, no scroll */
+  #music-level a { flex-direction: row; gap: 16px; overflow-x: visible; }
+  #music-level a > div { flex: 1 1 0; max-width: none; }
   #composers a { flex-direction: row; gap: 16px; }
   #music-level img, #composers img { width: 100%; max-width: none; }
 
