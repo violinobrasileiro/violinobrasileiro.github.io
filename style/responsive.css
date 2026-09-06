@@ -271,7 +271,11 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   #hc-04 a, #mc-04 a { font-family: redonda; font-size: 13px; }
 
   #contato { margin-top: 40px; }
+  /* run the two lines together as one sentence so "um email para" doesn't
+     get orphaned on its own line */
   #contato p { color: var(--goldYellow_Washed); font-size: 17px; line-height: 24px; padding-top: 4px; }
+  #contato p,
+  #contato #contato-descricao { display: inline; padding-top: 0; }
   #email { font-family: redonda; color: var(--goldYellow); font-size: 15px; }
 
   #apoio, #m-apoio {
