@@ -205,7 +205,7 @@
   #music-level a {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 4px;
     color: var(--forestGreen_Dark);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -536,7 +536,7 @@
   .homeContent iframe { max-height: 300px; }
 
   /* tablet: all 3 levels fit side by side, no scroll */
-  #music-level a { flex-direction: row; gap: 16px; overflow-x: visible; }
+  #music-level a { flex-direction: row; gap: 4px; overflow-x: visible; }
   #music-level a > div { flex: 1 1 0; max-width: none; }
   #composers a { flex-direction: row; gap: 16px; }
   #music-level img, #composers img { width: 100%; max-width: none; }
