@@ -416,9 +416,9 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .composerImg {
     width: 100%;
     max-width: 240px;
-    margin: 0 0 20px 0;
+    margin: 0 0 24px 0;
   }
-  .composerImg img { width: 100%; }
+  .composerImg img { width: 100%; display: block; margin: 0; }
 
   .composerDescription { width: 100%; border: 0; }
   .composerDescription h1 {
@@ -435,6 +435,8 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     max-width: none;
     color: var(--forestGreen_Dark);
   }
+  /* depoiment: first line of the testimonial sits 24px under the photo */
+  .composerDescription > p:first-child { padding-top: 0; }
   .composerDescription .bold { font-family: garamond-bold; }
 
   #fonte {
@@ -445,7 +447,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     opacity: .7;
   }
 
-  .composerInterview { padding-top: 40px; border-top: 1px solid #ccc; }
+  .composerInterview { padding-top: 0; border-top: 0; }
   .composerInterview iframe,
   .composerContent iframe {
     width: 100%;
