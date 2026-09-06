@@ -374,8 +374,17 @@ p {
   }
 
   .composerInterview{
-    padding-top: 64px;
-    border-top: 1px solid #ccc;
+    padding-top: 0;
+    border-top: 0;
+    width: 100%;
+  }
+
+  .composerInterview iframe{
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    display: block;
   }
 
   .divider{
