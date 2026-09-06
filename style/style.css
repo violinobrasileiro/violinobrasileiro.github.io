@@ -420,6 +420,7 @@ p {
     opacity: 0.5;
     letter-spacing: 0.3px;
     line-height: 1.9;
+    padding-top: 0;   /* cancel the generic `p { padding-top: 32px }` on composers/about/depoiment */
   }
 
   #contato{
