@@ -65,15 +65,15 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 
   #leftContent a img { display: none; }
 
-  /* first anchor becomes the logo; hide any duplicate logo anchor */
-  #leftContent a:first-child {
+  /* the logo anchor gets the wordmark as a background so it renders the same
+     on every page regardless of which <img> that page's markup carries */
+  #leftContent a {
     display: block;
     width: 220px;
     max-width: 60vw;
     height: 20px;
     background: url("../assets/logo-desktop-light.svg") left center / contain no-repeat;
   }
-  #leftContent a:nth-child(2) { display: none; }
 
   #rightContent {
     flex: 0 0 auto;
