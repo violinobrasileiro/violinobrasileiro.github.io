@@ -233,10 +233,23 @@
   #hc-03 p { color: var(--goldYellow_Washed); max-width: none; padding-bottom: 24px; }
   #hc-03 > div:first-child { padding-bottom: 40px; }
 
-  #composers a { display: flex; flex-direction: column; gap: 24px; }
-  #composers > div,
-  #composers a > div { width: 100%; text-align: center; }
-  #composers img { width: 70%; max-width: 240px; padding: 0; }
+  /* horizontal-scroll carousel: composers sit side by side and swipe */
+  #composers a {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+  #composers a > div {
+    flex: 0 0 58%;
+    max-width: 240px;
+    text-align: center;
+    scroll-snap-align: start;
+  }
+  #composers img { width: 100%; max-width: none; padding: 0; }
   #composers p { font-size: 15px; color: var(--goldYellow_Washed); opacity: .85; padding: 12px 0; }
 
   /* footer nav block — shared #hc-04 / #mc-04 */
@@ -538,7 +551,9 @@
   /* tablet: all 3 levels fit side by side, no scroll */
   #music-level a { flex-direction: row; gap: 4px; overflow-x: visible; }
   #music-level a > div { flex: 1 1 0; max-width: none; }
-  #composers a { flex-direction: row; gap: 16px; }
+  /* tablet: all composers fit side by side, no scroll */
+  #composers a { flex-direction: row; gap: 4px; overflow-x: visible; }
+  #composers a > div { flex: 1 1 0; max-width: none; }
   #music-level img, #composers img { width: 100%; max-width: none; }
 
   #music-list { padding: 56px 8vw 80px; }
