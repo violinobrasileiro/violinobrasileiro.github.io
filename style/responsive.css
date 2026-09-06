@@ -202,11 +202,14 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   #musicpage-link { margin-bottom: 40px; }
   #musicpage-link a,
   #composers-link {
-    color: var(--forestGreen_Dark);
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 2px;
   }
+  #musicpage-link a { color: var(--forestGreen_Dark); }
+  /* #hc-03 has a dark background here — match the desktop gold link colour */
+  #composers-link { color: var(--goldYellow); }
+  #composers-link:hover { color: var(--goldYellow_Washed); }
 
   /* horizontal-scroll carousel: the 3 levels sit side by side and swipe */
   #music-level a {
