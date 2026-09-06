@@ -21,18 +21,75 @@ footer p a {
 }
 footer p a:hover { color: var(--goldYellow_Washed); }
 
+/* ---- Header hide-on-scroll-down / show-on-scroll-up (all breakpoints).
+   nav.js toggles .header-hidden based on scroll direction. Desktop header
+   is position:fixed (header.css); mobile is position:sticky (below). ---- */
+header,
+#header,
+#header-light {
+  transition: transform .3s ease,
+              background-color .35s cubic-bezier(.22, .61, .36, 1);
+  will-change: transform, background-color;
+}
+header.header-hidden,
+#header.header-hidden,
+#header-light.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* ---- Transparent header on every page: no background, only the
+   wordmark / nav / hamburger recolour for contrast with what's behind.
+   Each page's <header> carries data-nav-theme; on the home page nav.js
+   updates it per section as you scroll. ---- */
+header[data-nav-theme],
+#header[data-nav-theme],
+#header-light[data-nav-theme] {
+  background-color: transparent;
+}
+
+header a,
+header .nav-toggle span,
+header #logo-desktop {
+  transition: color .35s cubic-bezier(.22, .61, .36, 1),
+              background-color .35s cubic-bezier(.22, .61, .36, 1),
+              filter .35s cubic-bezier(.22, .61, .36, 1);
+}
+header[data-nav-theme="dark"] #leftContent a {
+  background-image: url("../assets/logo-desktop.svg");   /* cream wordmark */
+}
+header[data-nav-theme="dark"] .nav-toggle span {
+  background-color: var(--goldYellow_Washed);
+}
+header[data-nav-theme="dark"] a {
+  color: var(--goldYellow_Washed);
+}
+header[data-nav-theme="dark"] a:hover { color: var(--goldYellow); }
+
+header[data-nav-theme="light"] #leftContent a {
+  background-image: url("../assets/logo-desktop-light.svg");  /* dark wordmark */
+}
+header[data-nav-theme="light"] .nav-toggle span {
+  background-color: var(--forestGreen);
+}
+header[data-nav-theme="light"] #logo-desktop {
+  filter: brightness(0);   /* the cream <img> logo -> near-black on white */
+}
+header[data-nav-theme="light"] a {
+  color: var(--forestGreen);
+}
+header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
+
 @media screen and (max-width: 919px) {
 
   /* ---- Kill the "mobile not supported" gate -------------------------------- */
   .container-mobile { display: none !important; }
 
-  html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
+  /* horizontal overflow is clipped on <html> (style.css) so <body> stays a
+     non-scroll-container and the sticky header sticks to the viewport */
+  body {
     width: 100%;
+    font-size: 16px;
   }
-
-  body { font-size: 16px; }
 
   img { max-width: 100%; height: auto; }
 
@@ -48,7 +105,8 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   header,
   #header,
   #header-light {
-    position: static;
+    position: sticky;
+    top: 0;
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -456,7 +514,9 @@ footer p a:hover { color: var(--goldYellow_Washed); }
      ====================================================================== */
   .mp-content-container {
     background-color: var(--forestGreen);
-    padding: 32px 20px 8px;
+    /* bleed up behind the transparent header so the wordmark reads on green */
+    margin-top: calc(-1 * var(--header-h, 76px));
+    padding: calc(var(--header-h, 76px) + 24px) 20px 8px;
   }
 
   .mp-video-yt-carousel,
@@ -586,7 +646,7 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 
   .aboutContent { padding: 48px 8vw 80px; }
 
-  .mp-content-container { padding: 56px 8vw 8px; }
+  .mp-content-container { padding: calc(var(--header-h, 76px) + 32px) 8vw 8px; }
   .video-youtube,
   .video-youtube-full-grid,
   .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }

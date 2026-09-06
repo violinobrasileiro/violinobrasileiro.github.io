@@ -1,2 +1,39 @@
 /* Violino Brasileiro — animation layer.
-   Placeholder kept so pages that link it don't 404. Add transitions here. */
+
+   Home scroll-reveal: each content block in a .homeContent section fades
+   in and rises 16px over 350ms. The first section plays on load (it's
+   already in view); the rest play as they enter the viewport.
+
+   Guarded by .reveal-ready on <html> (set by an inline script in the
+   <head>), so if scripting is off the content just shows normally.
+   nav.js adds .is-visible via IntersectionObserver. */
+
+.reveal-ready .homeContent > div,
+.reveal-ready .homeContent > iframe {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .35s cubic-bezier(.22, .61, .36, 1),
+              transform .35s cubic-bezier(.22, .61, .36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-ready .homeContent > div.is-visible,
+.reveal-ready .homeContent > iframe.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* gentle stagger between the two blocks of a section */
+.reveal-ready .homeContent > div:nth-child(2),
+.reveal-ready .homeContent > iframe:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .homeContent > div,
+  .reveal-ready .homeContent > iframe {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
