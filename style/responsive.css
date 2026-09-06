@@ -21,14 +21,30 @@ footer p a {
 }
 footer p a:hover { color: var(--goldYellow_Washed); }
 
+/* ---- Header hide-on-scroll-down / show-on-scroll-up (all breakpoints).
+   nav.js toggles .header-hidden based on scroll direction. Desktop header
+   is position:fixed (header.css); mobile is position:sticky (below). ---- */
+header,
+#header,
+#header-light {
+  transition: transform .3s ease;
+  will-change: transform;
+}
+header.header-hidden,
+#header.header-hidden,
+#header-light.header-hidden {
+  transform: translateY(-100%);
+}
+
 @media screen and (max-width: 919px) {
 
   /* ---- Kill the "mobile not supported" gate -------------------------------- */
   .container-mobile { display: none !important; }
 
   html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* clip (not hidden) so no scroll container is created — keeps the
+       sticky header sticking to the viewport */
+    overflow-x: clip;
     width: 100%;
   }
 
@@ -48,7 +64,8 @@ footer p a:hover { color: var(--goldYellow_Washed); }
   header,
   #header,
   #header-light {
-    position: static;
+    position: sticky;
+    top: 0;
     width: 100%;
     box-sizing: border-box;
     display: flex;

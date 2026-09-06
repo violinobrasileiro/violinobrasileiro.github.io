@@ -1,11 +1,13 @@
-/* Violino Brasileiro — mobile / tablet navigation.
-   Injects a hamburger button into the header and a full-screen overlay menu
-   with a close button. Everything is hidden by CSS at >= 920px, so this is a
-   no-op on desktop. Markup is built here so no page template had to change. */
+/* Violino Brasileiro — header interactions.
+   1. Mobile/tablet: injects a hamburger button + full-screen overlay menu
+      (hidden by CSS at >= 920px, so it's a no-op on desktop).
+   2. All breakpoints: hides the header on scroll-down, reveals it on
+      scroll-up, via the .header-hidden class (animated in CSS).
+   Markup is built here so no page template had to change. */
 (function () {
   "use strict";
 
-  function init() {
+  function initMenu() {
     var header = document.querySelector("header");
     var right = document.getElementById("rightContent");
     if (!header || !right) return;
@@ -70,6 +72,45 @@
         closeMenu();
       }
     });
+  }
+
+  function initHeaderScroll() {
+    var header = document.querySelector("header");
+    if (!header) return;
+
+    var lastY = window.pageYOffset || 0;
+    var ticking = false;
+    var REVEAL_AT_TOP = 4;   /* always show near the very top */
+    var HIDE_AFTER = 80;     /* don't hide until scrolled past this */
+
+    function update() {
+      ticking = false;
+      var y = window.pageYOffset || 0;
+
+      /* menu open => leave the header alone */
+      if (document.body.classList.contains("nav-open")) { lastY = y; return; }
+
+      if (y <= REVEAL_AT_TOP) {
+        header.classList.remove("header-hidden");
+      } else if (y > lastY && y > HIDE_AFTER) {
+        header.classList.add("header-hidden");      /* scrolling down */
+      } else if (y < lastY) {
+        header.classList.remove("header-hidden");   /* scrolling up */
+      }
+      lastY = y;
+    }
+
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  function init() {
+    initMenu();
+    initHeaderScroll();
   }
 
   if (document.readyState === "loading") {
