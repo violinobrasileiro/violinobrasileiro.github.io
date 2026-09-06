@@ -37,10 +37,13 @@ header.header-hidden,
   transform: translateY(-100%);
 }
 
-/* ---- Home page: transparent header, its content re-coloured for
-   contrast against the section behind it. nav.js sets [data-nav-theme]
-   as you scroll. ---- */
-header[data-nav-theme] {
+/* ---- Transparent header on every page: no background, only the
+   wordmark / nav / hamburger recolour for contrast with what's behind.
+   Each page's <header> carries data-nav-theme; on the home page nav.js
+   updates it per section as you scroll. ---- */
+header[data-nav-theme],
+#header[data-nav-theme],
+#header-light[data-nav-theme] {
   background-color: transparent;
 }
 
@@ -511,7 +514,9 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
      ====================================================================== */
   .mp-content-container {
     background-color: var(--forestGreen);
-    padding: 32px 20px 8px;
+    /* bleed up behind the transparent header so the wordmark reads on green */
+    margin-top: calc(-1 * var(--header-h, 76px));
+    padding: calc(var(--header-h, 76px) + 24px) 20px 8px;
   }
 
   .mp-video-yt-carousel,
@@ -641,7 +646,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
   .aboutContent { padding: 48px 8vw 80px; }
 
-  .mp-content-container { padding: 56px 8vw 8px; }
+  .mp-content-container { padding: calc(var(--header-h, 76px) + 32px) 8vw 8px; }
   .video-youtube,
   .video-youtube-full-grid,
   .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }

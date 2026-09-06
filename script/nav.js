@@ -89,6 +89,15 @@
     var REVEAL_AT_TOP = 4;   /* always show near the very top */
     var HIDE_AFTER = 80;     /* don't hide until scrolled past this */
 
+    /* expose the header height so pages can bleed their first section
+       up behind the transparent bar */
+    function syncHeaderHeight() {
+      document.documentElement.style.setProperty(
+        "--header-h", header.offsetHeight + "px"
+      );
+    }
+    syncHeaderHeight();
+
     function applyTheme() {
       if (!sections.length) return;
       /* which section sits just under the header's bottom edge? */
@@ -133,7 +142,10 @@
         ticking = true;
       }
     }, { passive: true });
-    window.addEventListener("resize", applyTheme, { passive: true });
+    window.addEventListener("resize", function () {
+      applyTheme();
+      syncHeaderHeight();
+    }, { passive: true });
   }
 
   function initReveal() {
