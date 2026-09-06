@@ -14,12 +14,14 @@
 .nav-toggle { display: none; }
 .nav-overlay { display: none; }
 
-/* ---- Footer credit link (all breakpoints) ---- */
+/* ---- Footer credit line (all breakpoints). Gold links, no underline;
+   the credit sits on its own line. ---- */
 footer p a {
   color: var(--goldYellow);
-  text-decoration: underline;
+  text-decoration: none;
 }
 footer p a:hover { color: var(--goldYellow_Washed); }
+footer .footer-credit { display: block; }
 
 /* ---- Header hide-on-scroll-down / show-on-scroll-up (all breakpoints).
    nav.js toggles .header-hidden based on scroll direction. Desktop header
@@ -347,6 +349,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     color: var(--goldYellow_Washed);
     opacity: .5;
     letter-spacing: .3px;
+    line-height: 1.9;
   }
 
   /* ======================================================================
@@ -656,9 +659,10 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     gap: 14px;
   }
 
-  /* 2 + 3. credit: name goes under the title, drop the " | " separator */
+  /* each footer segment on its own line, no " | " */
   footer .footer-sep { display: none; }
   footer .footer-title,
+  footer .footer-oss,
   footer .footer-credit { display: block; }
 }
 
