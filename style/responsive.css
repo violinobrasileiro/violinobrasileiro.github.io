@@ -618,9 +618,10 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 
 
 /* ==========================================================================
-   DESKTOP (> 915px) — header left gutter next to the logo is 24px
+   SMALL SCREENS (< 900px) — header left gutter next to the logo is 24px.
+   Desktop (>= 900px) keeps its original padding (header.css).
    ========================================================================== */
-@media screen and (min-width: 916px) {
+@media screen and (max-width: 899px) {
   header,
   #header,
   #header-light { padding-left: 24px; }
