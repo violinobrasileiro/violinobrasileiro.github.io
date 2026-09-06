@@ -1,4 +1,5 @@
-filterObjects("all");
+/* Music list filtering (music.html).
+   Levels: "01" iniciante, "02" intermediário, "03" avançado, "all". */
 
 function filterObjects(c){
 	var x, i;
@@ -6,9 +7,25 @@ function filterObjects(c){
 	if (c == "all") c = "";
 	for (i=0; i < x.length; i++) {
 		removeClass (x[i], "show");
-		if(x[i].className.indexOf(c) > -1) addClass(x[i], "show") 
+		if(x[i].className.indexOf(c) > -1) addClass(x[i], "show")
 	}
+}
 
+/* highlight the matching filter button */
+function setActiveTag(level){
+	var tags = document.querySelectorAll(".ListFilterTag .filterTag");
+	var index = { "all": 0, "01": 1, "02": 2, "03": 3 };
+	var active = index[level] != null ? index[level] : 0;
+	for (var i = 0; i < tags.length; i++){
+		removeClass(tags[i], "TagSelected");
+	}
+	if (tags[active]) addClass(tags[active], "TagSelected");
+}
+
+/* filter + highlight together (used by the buttons and on page load) */
+function applyFilter(level){
+	filterObjects(level);
+	setActiveTag(level);
 }
 
 function addClass(element, name){
@@ -33,4 +50,13 @@ function removeClass(element, name){
 		}
 	}
 	element.className = arr1.join(" ");
-} 
+}
+
+/* On load: if the URL carries ?nivel=01|02|03 (from the home page level
+   cards), open the list already filtered to that level. Otherwise show all.
+   No-op on pages without a music list. */
+(function(){
+	if (document.getElementsByClassName("music-list-item").length === 0) return;
+	var match = (window.location.search || "").match(/[?&]nivel=(0[123]|all)/);
+	applyFilter(match ? match[1] : "all");
+})();
