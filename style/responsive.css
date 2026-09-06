@@ -14,6 +14,13 @@
 .nav-toggle { display: none; }
 .nav-overlay { display: none; }
 
+/* ---- Footer credit link (all breakpoints) ---- */
+footer p a {
+  color: var(--goldYellow);
+  text-decoration: underline;
+}
+footer p a:hover { color: var(--goldYellow_Washed); }
+
 @media screen and (max-width: 919px) {
 
   /* ---- Kill the "mobile not supported" gate -------------------------------- */
