@@ -10,6 +10,10 @@
      - the site's own 920px block → desktop (unchanged)
    ========================================================================== */
 
+/* ---- Mobile nav: hidden on desktop, shown by the max-width block below ---- */
+.nav-toggle { display: none; }
+.nav-overlay { display: none; }
+
 @media screen and (max-width: 919px) {
 
   /* ---- Kill the "mobile not supported" gate -------------------------------- */
@@ -63,33 +67,102 @@
   }
   #leftContent a:nth-child(2) { display: none; }
 
-  #rightContent { flex: 1 1 auto; }
-
-  header ul,
-  #header ul,
-  #header-light ul {
+  #rightContent {
+    flex: 0 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px 20px;
-    padding: 0;
+    align-items: center;
   }
 
-  header li { margin: 0; }
+  /* the inline nav is replaced by the hamburger + overlay */
+  #rightContent > ul { display: none; }
 
-  header a,
-  #header a,
-  #header-light a {
-    color: var(--forestGreen);
+  /* ---- Hamburger button ---- */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--forestGreen);
+    border-radius: 2px;
+  }
+  .nav-toggle:hover span { background-color: var(--goldYellow); }
+
+  /* ---- Full-screen overlay menu ---- */
+  .nav-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--forestGreen_Dark);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, visibility .25s ease;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-overlay-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--goldYellow_Washed);
     font-family: redonda;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .nav-overlay-close:hover { color: var(--goldYellow); }
+  .nav-toggle:focus-visible,
+  .nav-overlay-close:focus-visible {
+    outline: 1px solid var(--goldYellow);
+    outline-offset: 2px;
+  }
+
+  .nav-overlay-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-overlay-menu li { margin: 0; padding: 0; }
+  .nav-overlay-menu a {
+    color: var(--goldYellow_Washed);
+    font-family: redonda;
+    font-size: 20px;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
+  .nav-overlay-menu a:hover { color: var(--goldYellow); }
 
-  header a:hover,
-  #header a:hover,
-  #header-light a:hover { color: var(--goldYellow); }
+  body.nav-open { overflow: hidden; }
 
   /* ======================================================================
      HOME  (index.html)
