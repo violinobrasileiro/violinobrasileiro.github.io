@@ -37,16 +37,9 @@ header.header-hidden,
   transform: translateY(-100%);
 }
 
-/* ---- Transparent header on every page: no background, only the
-   wordmark / nav / hamburger recolour for contrast with what's behind.
-   Each page's <header> carries data-nav-theme; on the home page nav.js
-   updates it per section as you scroll. ---- */
-header[data-nav-theme],
-#header[data-nav-theme],
-#header-light[data-nav-theme] {
-  background-color: transparent;
-}
-
+/* ---- Home page: header tinted to the section behind it.
+   nav.js sets header.style.backgroundColor + [data-nav-theme] as you scroll.
+   These rules keep the logo / nav / hamburger readable on either ground. ---- */
 header a,
 header .nav-toggle span,
 header #logo-desktop {
@@ -514,9 +507,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
      ====================================================================== */
   .mp-content-container {
     background-color: var(--forestGreen);
-    /* bleed up behind the transparent header so the wordmark reads on green */
-    margin-top: calc(-1 * var(--header-h, 76px));
-    padding: calc(var(--header-h, 76px) + 24px) 20px 8px;
+    padding: 32px 20px 8px;
   }
 
   .mp-video-yt-carousel,
@@ -646,7 +637,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
   .aboutContent { padding: 48px 8vw 80px; }
 
-  .mp-content-container { padding: calc(var(--header-h, 76px) + 32px) 8vw 8px; }
+  .mp-content-container { padding: 56px 8vw 8px; }
   .video-youtube,
   .video-youtube-full-grid,
   .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }
