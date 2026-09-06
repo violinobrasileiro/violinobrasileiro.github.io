@@ -27,7 +27,8 @@ footer p a:hover { color: var(--goldYellow_Washed); }
 header,
 #header,
 #header-light {
-  transition: transform .3s ease, background-color .16s ease-out;
+  transition: transform .3s ease,
+              background-color .32s cubic-bezier(.22, .61, .36, 1);
   will-change: transform, background-color;
 }
 header.header-hidden,
@@ -42,7 +43,9 @@ header.header-hidden,
 header a,
 header .nav-toggle span,
 header #logo-desktop {
-  transition: color .16s ease-out, background-color .16s ease-out, filter .16s ease-out;
+  transition: color .32s cubic-bezier(.22, .61, .36, 1),
+              background-color .32s cubic-bezier(.22, .61, .36, 1),
+              filter .32s cubic-bezier(.22, .61, .36, 1);
 }
 header[data-nav-theme="dark"] #leftContent a {
   background-image: url("../assets/logo-desktop.svg");   /* cream wordmark */
