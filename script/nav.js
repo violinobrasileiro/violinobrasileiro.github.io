@@ -138,9 +138,40 @@
     window.addEventListener("resize", applyTheme, { passive: true });
   }
 
+  function initReveal() {
+    if (!document.documentElement.classList.contains("reveal-ready")) return;
+
+    var targets = document.querySelectorAll(
+      ".homeContent > div, .homeContent > iframe"
+    );
+    if (!targets.length) return;
+
+    function revealAll() {
+      for (var i = 0; i < targets.length; i++) targets[i].classList.add("is-visible");
+    }
+
+    if (!("IntersectionObserver" in window)) { revealAll(); return; }
+
+    try {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+      for (var i = 0; i < targets.length; i++) io.observe(targets[i]);
+    } catch (err) {
+      revealAll();
+    }
+  }
+
   function init() {
     initMenu();
     initHeaderScroll();
+    initReveal();
   }
 
   if (document.readyState === "loading") {
