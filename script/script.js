@@ -1,14 +1,45 @@
-/* Music list filtering (music.html).
+/* Music list (music.html): level filter + "load more" pagination.
    Levels: "01" iniciante, "02" intermediário, "03" avançado, "all". */
 
-function filterObjects(c){
-	var x, i;
-	x = document.getElementsByClassName("music-list-item");
-	if (c == "all") c = "";
-	for (i=0; i < x.length; i++) {
-		removeClass (x[i], "show");
-		if(x[i].className.indexOf(c) > -1) addClass(x[i], "show")
+var ML_PAGE_SIZE = 10;
+var mlLevel = "all";
+var mlShown = ML_PAGE_SIZE;
+
+function mlMatches(item, level) {
+	return level === "all" || item.className.indexOf(level) > -1;
+}
+
+/* show the first `mlShown` items of the current level, hide the rest,
+   and update the "Ver mais" button */
+function mlRender() {
+	var items = document.getElementsByClassName("music-list-item");
+	var i, matched = 0, visible = 0;
+	for (i = 0; i < items.length; i++) {
+		removeClass(items[i], "show");
+		removeClass(items[i], "paged-out");
+		if (!mlMatches(items[i], mlLevel)) continue;
+		matched++;
+		addClass(items[i], "show");
+		if (visible < mlShown) {
+			visible++;
+		} else {
+			addClass(items[i], "paged-out");
+		}
 	}
+	var btn = document.getElementById("ml-load-more");
+	if (btn) btn.hidden = mlShown >= matched;
+}
+
+/* kept name for the inline onclick handlers / deep-link init */
+function filterObjects(c) {
+	mlLevel = (!c || c === "all") ? "all" : c;
+	mlShown = ML_PAGE_SIZE;
+	mlRender();
+}
+
+function mlLoadMore() {
+	mlShown += ML_PAGE_SIZE;
+	mlRender();
 }
 
 /* highlight the matching filter button */
@@ -52,11 +83,20 @@ function removeClass(element, name){
 	element.className = arr1.join(" ");
 }
 
-/* On load: if the URL carries ?nivel=01|02|03 (from the home page level
-   cards), open the list already filtered to that level. Otherwise show all.
-   No-op on pages without a music list. */
+/* On load: build the "Ver mais" button, then honour ?nivel=01|02|03 from
+   the home page level cards (defaults to all). No-op without a music list. */
 (function(){
-	if (document.getElementsByClassName("music-list-item").length === 0) return;
+	var list = document.getElementById("music-list");
+	if (!list || document.getElementsByClassName("music-list-item").length === 0) return;
+
+	var btn = document.createElement("button");
+	btn.id = "ml-load-more";
+	btn.type = "button";
+	btn.className = "ml-load-more";
+	btn.textContent = "Ver mais";
+	btn.addEventListener("click", mlLoadMore);
+	list.appendChild(btn);
+
 	var match = (window.location.search || "").match(/[?&]nivel=(0[123]|all)/);
 	applyFilter(match ? match[1] : "all");
 })();

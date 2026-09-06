@@ -5,6 +5,31 @@
   opacity: 0.3;
 }
 
+/* ---- Pagination ("Ver mais") ---- */
+.music-list-item.show.paged-out { display: none !important; }
+
+.ml-load-more {
+  display: block;
+  margin: 40px auto 0;
+  padding: 13px 30px;
+  font-family: redonda;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--forestGreen_Dark);
+  background-color: transparent;
+  border: 1px solid rgba(25, 45, 52, 0.3);
+  border-radius: 32px;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.ml-load-more:hover {
+  background-color: var(--goldYellow);
+  border-color: var(--goldYellow);
+  color: var(--forestGreen);
+}
+.ml-load-more[hidden] { display: none; }
+
 @media screen and (min-width: 920px) {
 
 #music-list {
