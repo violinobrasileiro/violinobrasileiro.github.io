@@ -1,0 +1,472 @@
+/* ==========================================================================
+   Violino Brasileiro — Responsive layer (tablet + mobile)
+   The original site is desktop-only: nearly every layout rule lives inside
+   `@media (min-width: 920px)`. This file provides the layout for everything
+   below that breakpoint.
+
+   Breakpoints
+     - base rules here            → phones  (< 600px)
+     - min-width: 600px block     → tablets (600px – 919px)
+     - the site's own 920px block → desktop (unchanged)
+   ========================================================================== */
+
+@media screen and (max-width: 919px) {
+
+  /* ---- Kill the "mobile not supported" gate -------------------------------- */
+  .container-mobile { display: none !important; }
+
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  body { font-size: 16px; }
+
+  img { max-width: 100%; height: auto; }
+
+  /* ---- Fluid type -------------------------------------------------------- */
+  h1 { font-size: 22px; line-height: 30px; }
+  p  { font-size: 17px; line-height: 27px; }
+
+  /* ======================================================================
+     HEADER  (shared by #header, #header-light on every page)
+     A cream bar with the dark wordmark drawn via CSS background so it works
+     no matter which <img> the page ships (some reference a missing file).
+     ====================================================================== */
+  header,
+  #header,
+  #header-light {
+    position: static;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 16px;
+    padding: 18px 20px;
+    background-color: var(--goldYellow_Washed);
+    z-index: 10;
+  }
+
+  #leftContent { flex: 0 0 auto; }
+
+  #leftContent a img { display: none; }
+
+  /* first anchor becomes the logo; hide any duplicate logo anchor */
+  #leftContent a:first-child {
+    display: block;
+    width: 150px;
+    height: 20px;
+    background: url("../assets/logo-desktop-light.svg") left center / contain no-repeat;
+  }
+  #leftContent a:nth-child(2) { display: none; }
+
+  #rightContent { flex: 1 1 auto; }
+
+  header ul,
+  #header ul,
+  #header-light ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px 20px;
+    padding: 0;
+  }
+
+  header li { margin: 0; }
+
+  header a,
+  #header a,
+  #header-light a {
+    color: var(--forestGreen);
+    font-family: redonda;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  header a:hover,
+  #header a:hover,
+  #header-light a:hover { color: var(--goldYellow); }
+
+  /* ======================================================================
+     HOME  (index.html)
+     ====================================================================== */
+  #homeContentContainer { width: 100%; padding-top: 0; }
+
+  .homeContent {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 44px 24px;
+  }
+
+  #hc-01 { display: block; }
+  #hc-01 > div { padding: 0 0 24px 0; }
+  #hc-01 p { max-width: none; padding-bottom: 20px; }
+
+  #hc-01 iframe,
+  .homeContent iframe {
+    width: 100% !important;
+    height: 56.25vw !important;
+    max-height: 340px;
+    display: block;
+  }
+
+  /* section 2 — levels */
+  #hc-02 { background-color: var(--light); }
+  #hc-02 p { color: var(--forestGreen_Dark); max-width: none; padding-bottom: 24px; }
+
+  #musicpage-link { margin-bottom: 40px; }
+  #musicpage-link a,
+  #composers-link {
+    color: var(--forestGreen_Dark);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  #music-level a { display: flex; flex-direction: column; gap: 28px; color: var(--forestGreen_Dark); }
+  #music-level > div,
+  #music-level a > div { width: 100%; text-align: center; }
+  #music-level img { width: 70%; max-width: 240px; padding: 0; }
+  #music-level h4 {
+    padding-top: 14px;
+    font-family: redonda;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  #music-level p { font-size: 15px; color: var(--forestGreen_Dark); opacity: .8; }
+
+  /* section 3 — composers */
+  #hc-03 { background-color: var(--forestGreen); }
+  #hc-03 p { color: var(--goldYellow_Washed); max-width: none; padding-bottom: 24px; }
+  #hc-03 > div:first-child { padding-bottom: 40px; }
+
+  #composers a { display: flex; flex-direction: column; gap: 24px; }
+  #composers > div,
+  #composers a > div { width: 100%; text-align: center; }
+  #composers img { width: 70%; max-width: 240px; padding: 0; }
+  #composers p { font-size: 15px; color: var(--goldYellow_Washed); opacity: .85; padding: 12px 0; }
+
+  /* footer nav block — shared #hc-04 / #mc-04 */
+  #hc-04, #mc-04 {
+    background-color: var(--forestGreen_Dark);
+    display: block;
+    box-sizing: border-box;
+    padding: 56px 24px;
+  }
+  #hc-04 ul, #mc-04 ul { display: flex; flex-wrap: wrap; gap: 12px 28px; padding: 0; }
+  #hc-04 li, #mc-04 li { padding: 0; }
+  #hc-04 a, #mc-04 a { font-family: redonda; font-size: 13px; }
+
+  #contato { margin-top: 40px; }
+  #contato p { color: var(--goldYellow_Washed); font-size: 17px; line-height: 24px; padding-top: 4px; }
+  #email { font-family: redonda; color: var(--goldYellow); font-size: 15px; }
+
+  #apoio, #m-apoio {
+    border: 0;
+    padding: 0;
+    margin: 40px 0 0 0;
+  }
+  #apoio p, #m-apoio p { padding-bottom: 10px; font-size: 15px; }
+  #apoio img, #m-apoio img { width: 140px; }
+
+  footer {
+    padding: 24px;
+    background-color: #070C0E;
+  }
+  footer p {
+    font-family: redonda;
+    font-size: 12px;
+    color: var(--goldYellow_Washed);
+    opacity: .5;
+    letter-spacing: .3px;
+  }
+
+  /* ======================================================================
+     MUSIC LIST  (music.html)
+     ====================================================================== */
+  #music-list { padding: 40px 20px 64px; }
+
+  .ListFilterTag {
+    padding-bottom: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .filterTag { margin: 0; }
+
+  /* The filter JS shows matches by adding `.show`; everything else must be
+     hidden by default (the desktop rule that does this is gated at 920px). */
+  .music-list-item {
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(25, 45, 52, .12);
+  }
+  /* JS toggles `.show` (display: inline-flex !important) — override it */
+  .music-list-item.show {
+    display: flex !important;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .music-list-item p { color: var(--forestGreen); margin: 0; }
+  .ml-left-content { display: block; margin: 0; }
+  .ml-left-content .ml-composer {
+    padding: 0;
+    font-family: garamond-bold;
+    font-size: 18px;
+    width: auto;
+  }
+  .ml-left-content p { font-family: garamond; font-size: 18px; }
+  .ml-right-content { display: block; padding: 0; }
+  .ml-right-content p { font-family: redonda; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: .6; }
+
+  /* ======================================================================
+     COMPOSERS + DEPOIMENTOS  (composers.html, depoiment.html)
+     ====================================================================== */
+  #composerContentContainer { width: 100%; padding-top: 0; }
+
+  .composerContent {
+    padding: 40px 24px 64px;
+    margin: 0;
+  }
+
+  .composerItem {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+  }
+  .composerItem:last-child { border-bottom: 0; }
+
+  .composerImg {
+    width: 100%;
+    max-width: 240px;
+    margin: 0 0 20px 0;
+  }
+  .composerImg img { width: 100%; }
+
+  .composerDescription { width: 100%; border: 0; }
+  .composerDescription h1 {
+    font-family: garamond;
+    font-size: 22px;
+    padding-top: 0;
+    color: var(--forestGreen_Dark);
+  }
+  .composerDescription p {
+    font-family: garamond;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 16px;
+    max-width: none;
+    color: var(--forestGreen_Dark);
+  }
+  .composerDescription .bold { font-family: garamond-bold; }
+
+  #fonte {
+    font-family: garamond;
+    font-size: 12px;
+    padding-top: 4px;
+    color: var(--forestGreen_Dark);
+    opacity: .7;
+  }
+
+  .composerInterview { padding-top: 40px; border-top: 1px solid #ccc; }
+  .composerInterview iframe,
+  .composerContent iframe {
+    width: 100%;
+    height: 56.25vw;
+    max-height: 420px;
+  }
+
+  /* ======================================================================
+     ABOUT  (about.html)
+     ====================================================================== */
+  #aboutContentContainer { width: 100%; padding-top: 0; }
+
+  .aboutContent { padding: 32px 24px 64px; margin: 0; }
+
+  #composerDescription { display: block; }
+  #composerDescription h1 { padding-top: 0; margin-bottom: 8px; color: var(--forestGreen_Dark); }
+
+  #aboutParagraph { width: 100%; margin: 0; }
+  #aboutParagraph p { color: var(--forestGreen_Dark); font-size: 16px; line-height: 25px; padding-top: 16px; }
+  #aboutSpacing { padding-bottom: 32px; }
+
+  .luizFelipe { margin-top: 48px; }
+
+  #portalViolino {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+  }
+  #portalViolino #portalContent {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 14px;
+  }
+  #portalContent img { width: 56px; height: fit-content; margin: 0; }
+  #portalViolino p { padding-top: 0; color: var(--forestGreen_Dark); font-size: 15px; }
+  #portalViolino span { font-family: garamond-bold; }
+
+  .divider { background-color: #ccc; width: 100%; height: 1px; margin: 8px 0; }
+
+  #author { display: block; margin-top: 20px; }
+  #authorImage { width: 100%; max-width: 320px; }
+  #authorImage img { width: 100%; }
+  #authorImage p { padding-top: 10px; color: var(--forestGreen_Dark); font-size: 14px; }
+
+  .aboutLink, .pLink {
+    font-family: garamond;
+    color: var(--forestGreen);
+    text-decoration: underline;
+  }
+  .pLink { background-color: #FEEBCE; }
+
+  /* ======================================================================
+     MUSIC PAGE TEMPLATE  (music-pages/**)
+     ====================================================================== */
+  .mp-content-container {
+    background-color: var(--forestGreen);
+    padding: 32px 20px 8px;
+  }
+
+  .mp-video-yt-carousel,
+  .mp-video-yt-carousel-2nd,
+  .mp-video {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .mp-video-yt-carousel-2nd { margin-top: 12px; }
+
+  .video-youtube,
+  .video-youtube-full-grid,
+  .mp-video iframe {
+    flex: 0 0 86%;
+    width: 86%;
+    height: 52vw;
+    max-height: 320px;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .mp-music-description {
+    display: block;
+    width: 100%;
+    padding: 36px 0 8px;
+  }
+  .mp-txt-content { width: 100%; }
+  .mp-txt-content h1 { color: var(--goldYellow_Washed); }
+  .mp-txt-headline { font-size: 16px; line-height: 22px; padding-top: 8px; }
+  .mp-txt-moreinfo { padding-top: 24px; font-size: 15px; line-height: 23px; }
+  .mp-fonte { font-size: 13px; letter-spacing: .2px; padding-top: 8px; opacity: .8; }
+
+  .mp-cta { display: flex; padding-top: 24px; }
+  .button-primary {
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 40px;
+    padding: 14px 22px;
+    color: var(--goldYellow_Washed);
+    font-family: redonda;
+    font-size: 13px;
+  }
+  .button-primary:hover {
+    background-color: var(--goldYellow);
+    border-color: var(--goldYellow);
+    color: var(--forestGreen);
+  }
+
+  /* sheet image */
+  .mp-sheetimg {
+    background-color: var(--goldYellow_Washed);
+    text-align: center;
+    padding: 40px 20px;
+    display: flex;
+  }
+  .mp-sheetimg-container { background-color: var(--light); width: 100%; padding: 32px 0; }
+  .mp-sheetimg img { width: 100%; }
+
+  /* more music carousel */
+  .mp-moremusic {
+    margin: 40px 20px;
+    color: var(--forestGreen);
+  }
+  .mp-moremusic-border { border-top: 1px solid rgba(25, 45, 52, .1); }
+  .mp-moremusic h2 {
+    font-family: garamond-bold;
+    font-size: 19px;
+    line-height: 28px;
+    margin: 24px 0;
+    color: var(--forestGreen);
+  }
+  .mp-moremusic-scrollable {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .moremusic-card { margin: 0; flex: 0 0 auto; }
+  .moremusic-videothumb { width: 220px; margin-bottom: 12px; }
+  .moremusic-videothumb img { width: 100%; }
+  .moremusic-title { color: var(--forestGreen); font-size: 15px; line-height: 19px; }
+  .moremusic-author { color: var(--forestGreen); font-size: 13px; }
+
+  /* music-page footer uses a bare #hc-04 with a nested #apoio */
+  .mp-content-container ~ #hc-04 ul { margin-bottom: 24px; }
+
+} /* end max-width: 919px */
+
+
+/* ==========================================================================
+   TABLET  (600px – 919px) — widen gutters, use 2-up grids
+   ========================================================================== */
+@media screen and (min-width: 600px) and (max-width: 919px) {
+
+  h1 { font-size: 24px; }
+  p  { font-size: 18px; line-height: 29px; }
+
+  .homeContent { padding: 64px 8vw; }
+  #hc-01 { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; }
+  #hc-01 > div { flex: 1 1 300px; padding: 0; }
+  #hc-01 iframe,
+  .homeContent iframe { max-height: 300px; }
+
+  #music-level a { flex-direction: row; gap: 16px; }
+  #composers a { flex-direction: row; gap: 16px; }
+  #music-level img, #composers img { width: 100%; max-width: none; }
+
+  #music-list { padding: 56px 8vw 80px; }
+
+  .music-list-item.show { flex-direction: row; }
+  .ml-left-content { display: flex; gap: 24px; }
+  .ml-left-content .ml-composer { width: 200px; flex: 0 0 200px; }
+
+  .composerContent { padding: 56px 8vw 80px; }
+  .composerItem { display: flex; gap: 28px; }
+  .composerImg { flex: 0 0 220px; margin-bottom: 0; }
+
+  .aboutContent { padding: 48px 8vw 80px; }
+
+  .mp-content-container { padding: 56px 8vw 8px; }
+  .video-youtube,
+  .video-youtube-full-grid,
+  .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }
+  .mp-moremusic { margin: 48px 8vw; }
+  .mp-sheetimg { padding: 56px 8vw; }
+}
