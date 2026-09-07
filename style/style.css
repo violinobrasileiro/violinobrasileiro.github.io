@@ -358,7 +358,7 @@ p {
     background-color: var(--forestGreen_Dark);
     display: flex;
     justify-content: space-between;
-    padding: 140px 15vw;
+    padding: 80px 15vw;
   }
 
   #hc-04 ul {
