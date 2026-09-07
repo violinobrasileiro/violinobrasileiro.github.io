@@ -553,7 +553,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .mp-music-description {
     display: block;
     width: 100%;
-    padding: 36px 0 0;
+    padding: 36px 0;   /* symmetric top / bottom, like desktop */
   }
   .mp-txt-content { width: 100%; }
   .mp-txt-content h1 { color: var(--goldYellow_Washed); }
