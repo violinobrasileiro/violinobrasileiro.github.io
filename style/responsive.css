@@ -109,7 +109,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     align-items: center;
     justify-content: space-between;
     gap: 12px 16px;
-    padding: 18px 20px;
+    padding: 18px 24px;
     background-color: var(--goldYellow_Washed);
     z-index: 10;
   }
@@ -365,7 +365,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   /* ======================================================================
      MUSIC LIST  (music.html)
      ====================================================================== */
-  #music-list { padding: 40px 20px 64px; }
+  #music-list { padding: 40px 24px 64px; }
 
   .ListFilterTag {
     padding-bottom: 32px;
@@ -517,7 +517,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
      ====================================================================== */
   .mp-content-container {
     background-color: var(--forestGreen);
-    padding: 32px 20px 8px;
+    padding: 32px 24px 8px;
   }
 
   .mp-video-yt-carousel,
@@ -573,7 +573,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .mp-sheetimg {
     background-color: var(--goldYellow_Washed);
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 24px;
     display: flex;
   }
   .mp-sheetimg-container { background-color: var(--light); width: 100%; padding: 32px 0; }
@@ -581,7 +581,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
   /* more music carousel */
   .mp-moremusic {
-    margin: 40px 20px;
+    margin: 40px 24px;
     color: var(--forestGreen);
   }
   .mp-moremusic-border { border-top: 1px solid rgba(25, 45, 52, .1); }
@@ -620,6 +620,16 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
   h1 { font-size: 24px; }
   p  { font-size: 18px; line-height: 29px; }
+
+  /* header + footer share the content's 8vw side gutter */
+  header,
+  #header,
+  #header-light {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+  #hc-04, #mc-04 { padding: 56px 8vw; }
+  footer { padding: 24px 8vw; }
 
   .homeContent { padding: 64px 8vw; }
   #hc-01 { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; }
@@ -691,13 +701,3 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   footer .footer-credit { display: block; }
 }
 
-
-/* ==========================================================================
-   SMALL SCREENS (< 900px) — header left gutter next to the logo is 24px.
-   Desktop (>= 900px) keeps its original padding (header.css).
-   ========================================================================== */
-@media screen and (max-width: 899px) {
-  header,
-  #header,
-  #header-light { padding-left: 24px; }
-}
