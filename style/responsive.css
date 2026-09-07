@@ -180,7 +180,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .nav-overlay-logo {
     position: absolute;
     top: 26px;
-    left: 20px;
+    left: 24px;
     width: 200px;
     max-width: 55vw;
     height: 20px;
@@ -190,7 +190,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .nav-overlay-close {
     position: absolute;
     top: 18px;
-    right: 20px;
+    right: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -628,7 +628,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   h1 { font-size: 24px; }
   p  { font-size: 18px; line-height: 29px; }
 
-  /* header + footer share the content's 8vw side gutter */
+  /* header + footer (and the open menu) share the content's 8vw gutter */
   header,
   #header,
   #header-light {
@@ -637,6 +637,8 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   }
   #hc-04, #mc-04 { padding: 56px 8vw; }
   footer { padding: 24px 8vw; }
+  .nav-overlay-logo { left: 8vw; }
+  .nav-overlay-close { right: 8vw; }
 
   .homeContent { padding: 64px 8vw; }
   #hc-01 { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; }
