@@ -177,6 +177,16 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     pointer-events: auto;
   }
 
+  .nav-overlay-logo {
+    position: absolute;
+    top: 26px;
+    left: 20px;
+    width: 200px;
+    max-width: 55vw;
+    height: 20px;
+    background: url("../assets/logo-desktop.svg") left center / contain no-repeat;
+  }
+
   .nav-overlay-close {
     position: absolute;
     top: 18px;

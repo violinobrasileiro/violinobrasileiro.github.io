@@ -46,10 +46,31 @@
       '<rect x="7.06055" y="6" width="16" height="1.5" transform="rotate(45 7.06055 6)" fill="currentColor"/>' +
       '<rect width="16" height="1.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.3135 6)" fill="currentColor"/></svg>';
 
+    /* home link, taken from the header logo so the relative path is right */
+    var logoLink = header.querySelector("#leftContent a");
+    var homeHref = logoLink ? logoLink.getAttribute("href") : "index.html";
+
+    /* wordmark, links home */
+    var overlayLogo = document.createElement("a");
+    overlayLogo.className = "nav-overlay-logo";
+    overlayLogo.href = homeHref;
+    overlayLogo.setAttribute("aria-label", "Início");
+
     var menu = document.createElement("nav");
     menu.className = "nav-overlay-menu";
-    menu.appendChild(sourceList.cloneNode(true));
+    var list = sourceList.cloneNode(true);
 
+    /* prepend an "Início" item */
+    var homeItem = document.createElement("li");
+    var homeAnchor = document.createElement("a");
+    homeAnchor.href = homeHref;
+    homeAnchor.textContent = "Início";
+    homeItem.appendChild(homeAnchor);
+    list.insertBefore(homeItem, list.firstElementChild);
+
+    menu.appendChild(list);
+
+    overlay.appendChild(overlayLogo);
     overlay.appendChild(closeBtn);
     overlay.appendChild(menu);
     document.body.appendChild(overlay);
@@ -76,6 +97,7 @@
     menu.addEventListener("click", function (e) {
       if (e.target.closest("a")) closeMenu();
     });
+    overlayLogo.addEventListener("click", closeMenu);
     document.addEventListener("keydown", function (e) {
       if ((e.key === "Escape" || e.key === "Esc") && overlay.classList.contains("open")) {
         closeMenu();
