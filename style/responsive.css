@@ -650,9 +650,17 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
 
 /* ==========================================================================
-   PHONES  (< 600px) — footer stacks
+   PHONES  (< 600px) — footer stacks; home carousels bleed to the right edge
    ========================================================================== */
 @media screen and (max-width: 599px) {
+
+  /* the level / composer carousels run flush to the right screen edge
+     (cancel the .homeContent right padding); left stays aligned with the
+     section text */
+  #music-level,
+  #composers a {
+    margin-right: -24px;
+  }
 
   /* 1. footer nav links one per line */
   #hc-04 ul,
