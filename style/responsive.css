@@ -492,13 +492,20 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
     width: 100%;
     box-sizing: border-box;
     display: flex;
+    align-items: flex-start;
     gap: 14px;
   }
-  #portalContent img { width: 56px; height: fit-content; margin: 0; }
+  #portalContent img {
+    width: 56px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 0;
+  }
   #portalViolino p { padding-top: 0; color: var(--forestGreen_Dark); font-size: 15px; }
   #portalViolino span { font-family: garamond-bold; }
 
-  .divider { background-color: #ccc; width: 100%; height: 1px; margin: 8px 0; }
+  /* no rule under the stacked "Portal Violino" card */
+  .divider { display: none; }
 
   #author { display: block; margin-top: 20px; }
   #authorImage { width: 100%; max-width: 320px; }
