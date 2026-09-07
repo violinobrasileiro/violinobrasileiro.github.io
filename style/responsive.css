@@ -654,12 +654,17 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
    ========================================================================== */
 @media screen and (max-width: 599px) {
 
-  /* the level / composer carousels run flush to the right screen edge
-     (cancel the .homeContent right padding); left stays aligned with the
-     section text */
+  /* the level / composer carousels extend under the section's right
+     padding so cards peek from the screen edge while scrolling; the last
+     card still stops 24px short of the edge */
   #music-level,
   #composers a {
     margin-right: -24px;
+    scroll-padding-right: 24px;
+  }
+  #music-level > a:last-child,
+  #composers a > div:last-child {
+    margin-right: 24px;
   }
 
   /* 1. footer nav links one per line */
