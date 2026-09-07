@@ -524,7 +524,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
      ====================================================================== */
   .mp-content-container {
     background-color: var(--forestGreen);
-    padding: 32px 24px 8px;
+    padding: 32px 24px 0;
   }
 
   .mp-video-yt-carousel,
@@ -553,7 +553,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .mp-music-description {
     display: block;
     width: 100%;
-    padding: 36px 0 8px;
+    padding: 36px 0 0;
   }
   .mp-txt-content { width: 100%; }
   .mp-txt-content h1 { color: var(--goldYellow_Washed); }
@@ -561,7 +561,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
   .mp-txt-moreinfo { padding-top: 24px; font-size: 15px; line-height: 23px; }
   .mp-fonte { font-size: 13px; letter-spacing: .2px; padding-top: 8px; opacity: .8; }
 
-  .mp-cta { display: flex; padding-top: 24px; }
+  .mp-cta { display: flex; padding: 24px 0; }   /* symmetric top / bottom when stacked */
   .button-primary {
     border: 1px solid rgba(255, 255, 255, .25);
     border-radius: 40px;
@@ -666,7 +666,7 @@ header[data-nav-theme="light"] a:hover { color: var(--goldYellow); }
 
   .aboutContent { padding: 48px 8vw 80px; }
 
-  .mp-content-container { padding: 56px 8vw 8px; }
+  .mp-content-container { padding: 56px 8vw 0; }
   .video-youtube,
   .video-youtube-full-grid,
   .mp-video iframe { flex-basis: 60%; width: 60%; height: 34vw; }
